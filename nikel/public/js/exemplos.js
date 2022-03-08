@@ -70,3 +70,11 @@ adicionarPessoa({
 });
 
 console.log(pessoas);
+
+document.getElementById("link-conta").addEventListener("click", function(){
+    alert("o usuario clicou no link criar conta");
+})
+
+document.getElementById("link-conta").addEventListener("click", function(){
+    console.log("o usuario clicou no link criar conta");
+})

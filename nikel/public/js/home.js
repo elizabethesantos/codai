@@ -1,8 +1,6 @@
 const myModal = new bootstrap.Modal("#transaction-modal");// tras a modal para o js
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("sesion");
-let cashIn =[];
-let cashOut = [];
 let data = {
     transactions: []
 };
@@ -47,7 +45,7 @@ function checkedLogged() {
     if(dataUser) {
         data = JSON.parse(dataUser);//pegando os dados das transaçoes salvas
 
-        console.log(data);
+        getCashIn();
     }
 }
 
@@ -61,7 +59,41 @@ function logout() {
 function getCashIn(){
     const transactions = data.transactions;
 
-    
+    const cashIn = transactions.filter((item) => item.type === "1");
+
+    if(cashIn.length) {
+        let cashINHtml = ``;
+        let limit = 0;  
+        
+        if(cashIn.length > 5) {
+            limit = 5;
+        } else {
+            limit = cashIn.length;
+        }
+
+        
+        for (let index = 0; index < limit; index++) {
+            cashINHtml += `
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h3 class="fs-2">R$ ${cashIn[index].value.tofixed(2)}</h3>
+                        <div class="container p-0">
+                            <div class="row">
+                                <div class="col-12 col-md-8">
+                                    <p>${cashIn[index].description}</p>
+                                </div>
+                                <div class="col-12 col-md-3 d-flex justify-content-end">
+                                     ${cashIn[index].date}
+                                </div>
+                            </div>
+                        </div>
+                </div>
+             </div>
+            `
+        }
+
+        document.getElementById("cash-in-list").innerHTML = cashINHtml;
+    }    
 }
 
 function saveData(data) {

@@ -1,6 +1,8 @@
 const myModal = new bootstrap.Modal("#transaction-modal");// tras a modal para o js
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("sesion");
+let cashIn =[];
+let cashOut = [];
 let data = {
     transactions: []
 };
@@ -54,6 +56,12 @@ function logout() {
     localStorage.removeItem("session");
 
     window.location.href = "index.html";
+}
+
+function getCashIn(){
+    const transactions = data.transactions;
+
+    
 }
 
 function saveData(data) {

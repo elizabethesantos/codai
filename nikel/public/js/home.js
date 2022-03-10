@@ -18,7 +18,7 @@ document.getElementById("transaction-form").addEventListener("submit", function(
 
     data.transactions.unshift({
         value: value, type: type, description: description, date: date
-    });
+});
 
     saveData(data);
     e.target.reset();//limpa o formulario
@@ -44,6 +44,8 @@ function checkedLogged() {
     const dataUser = localStorage.getItem(logged);
     if(dataUser) {
         data = JSON.parse(dataUser);//pegando os dados das transaçoes salvas
+
+        console.log(data);
     }
 }
 
@@ -51,7 +53,7 @@ function logout() {
     sessionStorage.removeItem("logged");
     localStorage.removeItem("session");
 
-    window.location.href = "index.html"
+    window.location.href = "index.html";
 }
 
 function saveData(data) {

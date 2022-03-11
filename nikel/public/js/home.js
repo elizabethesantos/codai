@@ -2,7 +2,7 @@ const myModal = new bootstrap.Modal("#transaction-modal");// tras a modal para o
 let logged = sessionStorage.getItem("logged");
 const session = localStorage.getItem("sesion");
 let data = {
-    transactions: []
+    transaction: []
 };
 
 document.getElementById("button-logout").addEventListener("click", logout);
@@ -16,7 +16,7 @@ document.getElementById("transaction-form").addEventListener("submit", function(
     const date = document.getElementById("date-input").value;
     const type = document.querySelector('input[name="type-input"]:checked').value;
 
-    data.transactions.unshift({
+    data.transaction.unshift({
         value: value, type: type, description: description, date: date
 });
 
@@ -57,9 +57,9 @@ function logout() {
 }
 
 function getCashIn(){
-    const transactions = data.transactions;
+    const transaction = data.transaction;
 
-    const cashIn = transactions.filter((item) => item.type === "1");
+    const cashIn = transaction.filter((item) => item.type === "1");
 
     if(cashIn.length) {
         let cashINHtml = ``;

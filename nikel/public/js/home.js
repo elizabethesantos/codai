@@ -76,7 +76,7 @@ function getCashIn(){
             cashINHtml += `
             <div class="row mb-4">
                 <div class="col-12">
-                    <h3 class="fs-2">R$ ${cashIn[index].value.tofixed(2)}</h3>
+                    <h3 class="fs-2">R$ ${ cashIn[index].value.tofixed(2)}</h3>
                         <div class="container p-0">
                             <div class="row">
                                 <div class="col-12 col-md-8">
